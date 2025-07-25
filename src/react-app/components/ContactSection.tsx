@@ -238,57 +238,17 @@ export default function ContactSection() {
 
           {/* Contact Info */}
           <div className="space-y-6 sm:space-y-8">
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Contact Information</h3>
-              <div className="space-y-4 sm:space-y-6">
-                {contactInfo.map((info, index) => (
-                  <a
-                    key={index}
-                    href={info.href}
-                    className="flex items-center gap-3 sm:gap-4 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300 group"
-                  >
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-violet-500/30 to-pink-500/30 dark:from-violet-500/20 dark:to-pink-500/20 rounded-lg flex items-center justify-center group-hover:from-violet-500/40 group-hover:to-pink-500/40 dark:group-hover:from-violet-500/30 dark:group-hover:to-pink-500/30 transition-all duration-300">
-                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </div>
-                    <div>
-                      <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{info.label}</div>
-                      <div className="font-medium text-sm sm:text-base">{info.value}</div>
-                    </div>
-                  </a>
-                ))}
-              </div>
+            <GlassCard className="p-4 sm:p-6" stickyIndex={1}>
+              {/* Send Message form */}
             </GlassCard>
-
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">Follow Me</h3>
-              <div className="flex gap-3 sm:gap-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-10 h-10 sm:w-12 sm:h-12 bg-gray-200/60 dark:bg-white/10 rounded-lg flex items-center justify-center text-gray-600 dark:text-gray-300 ${social.color} transition-all duration-300 hover:scale-110 hover:bg-gray-300/70 dark:hover:bg-white/20`}
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                  </a>
-                ))}
-              </div>
+            <GlassCard className="p-4 sm:p-6" stickyIndex={2}>
+              {/* Contact Information */}
             </GlassCard>
-
-            <GlassCard className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-4">Let's Work Together</h3>
-              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-4">
-                I'm always excited about new opportunities and challenging projects. 
-                Whether you're a startup looking for a dedicated developer or an established 
-                company needing fresh ideas, I'd love to contribute to your success.
-              </p>
-              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                <div>💼 Open to internship opportunities</div>
-                <div>🚀 Available for freelance projects</div>
-                <div>🤝 Interested in collaborations</div>
-              </div>
+            <GlassCard className="p-4 sm:p-6" stickyIndex={3}>
+              {/* Follow Me */}
+            </GlassCard>
+            <GlassCard className="p-4 sm:p-6" stickyIndex={4}>
+              {/* Let's Work Together */}
             </GlassCard>
           </div>
         </div>
