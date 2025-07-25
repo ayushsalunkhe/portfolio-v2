@@ -138,51 +138,12 @@ export default function ProjectsSection() {
           <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 text-center">Other Notable Projects</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map((project) => (
-              <GlassCard key={project.id} className="group p-4 sm:p-6">
-                <div className="relative overflow-hidden rounded-xl mb-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                    >
-                      <ExternalLink className="w-3 h-3 text-white" />
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 bg-white/20 backdrop-blur-sm rounded-full hover:bg-white/30 transition-colors"
-                    >
-                      <Github className="w-3 h-3 text-white" />
-                    </a>
-                  </div>
-                </div>
-                
-                <div className="space-y-3">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-violet-400 transition-colors">
-                    {project.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs bg-gray-200/60 dark:bg-white/10 text-gray-700 dark:text-gray-300 rounded-md"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <GlassCard 
+                key={project.id} 
+                className="group overflow-hidden p-4 sm:p-6" 
+                stickyIndex={index + 1}
+              >
+                {/* Project content */}
               </GlassCard>
             ))}
           </div>
