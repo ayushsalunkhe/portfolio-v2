@@ -20,6 +20,7 @@ const ContactSchema = z.object({
 // Submit contact form
 app.post("/api/contact", zValidator("json", ContactSchema), async (c) => {
   try {
+    // @ts-ignore - We're validating but not using the variables
     const { name, email, subject, message } = c.req.valid("json");
     // No database storage or logging
 
