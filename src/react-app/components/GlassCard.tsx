@@ -4,11 +4,18 @@ interface GlassCardProps {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  stickyIndex?: number;
 }
 
-export default function GlassCard({ children, className = '', hover = true }: GlassCardProps) {
+export default function GlassCard({ 
+  children, 
+  className = '', 
+  hover = true,
+  stickyIndex
+}: GlassCardProps) {
   return (
     <div
+      id={stickyIndex ? `sticky-card-${stickyIndex}` : undefined}
       className={`
         backdrop-blur-xl 
         bg-white/80 dark:bg-white/5 
@@ -17,6 +24,7 @@ export default function GlassCard({ children, className = '', hover = true }: Gl
         ${hover ? 'hover:bg-white/90 dark:hover:bg-white/10 hover:border-gray-300/60 dark:hover:border-white/20' : ''}
         transition-all duration-500 ease-out
         shadow-xl shadow-gray-200/20 dark:shadow-black/20
+        ${stickyIndex ? 'sticky-card' : ''}
         ${className}
       `}
     >
