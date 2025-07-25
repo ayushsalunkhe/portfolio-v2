@@ -21,8 +21,7 @@ const ContactSchema = z.object({
 app.post("/api/contact", zValidator("json", ContactSchema), async (c) => {
   try {
     const { name, email, subject, message } = c.req.valid("json");
-    // No database storage, just log the message
-    console.log("Contact form submission:", { name, email, subject, message });
+    // No database storage or logging
 
     return c.json({
       success: true,
