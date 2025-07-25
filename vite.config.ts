@@ -15,4 +15,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  base: "/", // Add this line to set the base path
 });
