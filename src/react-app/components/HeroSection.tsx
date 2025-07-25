@@ -90,53 +90,51 @@ export default function HeroSection() {
 
         {/* Right side - Code terminal */}
         <div className="flex justify-center lg:justify-end mt-8 lg:mt-0">
-          <GlassCard className="w-full max-w-sm sm:max-w-md">
-            <div className="space-y-4">
-              {/* Terminal header */}
-              <div className="flex items-center gap-2 pb-4 border-b border-gray-300/30 dark:border-white/10">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="ml-4 text-xs sm:text-sm text-gray-600 dark:text-gray-400">terminal</span>
-              </div>
+          <GlassCard className="w-full max-w-sm sm:max-w-md bg-black/80 dark:bg-black/40">
+            {/* Terminal header */}
+            <div className="flex items-center gap-2 pb-4 border-b border-gray-300/30 dark:border-white/10">
+              <div className="w-3 h-3 rounded-full bg-red-500"></div>
+              <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+              <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <span className="ml-4 text-xs sm:text-sm text-gray-400 dark:text-gray-400">terminal</span>
+            </div>
 
-              {/* Code content */}
-              <div className="font-mono text-xs sm:text-sm space-y-2">
-                <div className="text-gray-600 dark:text-gray-400">
-                  <span className="text-pink-500 dark:text-pink-400">const</span>{' '}
-                  <span className="text-gray-900 dark:text-white">developer</span>{' '}
-                  <span className="text-pink-500 dark:text-pink-400">=</span>{' '}
-                  <span className="text-gray-600 dark:text-gray-400">{'{'}</span>
-                </div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">
-                  <span className="text-gray-900 dark:text-white">name:</span>{' '}
-                  <span className="text-green-600 dark:text-green-400">'Ayush Salunkhe'</span>,
-                </div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">
-                  <span className="text-gray-900 dark:text-white">skills:</span>{' '}
-                  <span className="text-gray-600 dark:text-gray-400">[</span>
-                </div>
-                <div className="pl-8 text-green-600 dark:text-green-400">
-                  'React', 'Node.js', 'MongoDB',
-                </div>
-                <div className="pl-8 text-green-600 dark:text-green-400">
-                  'Express', 'JavaScript', 'Python'
-                </div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">],</div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">
-                  <span className="text-gray-900 dark:text-white">education:</span>{' '}
-                  <span className="text-green-600 dark:text-green-400">'Computer Engineering'</span>,
-                </div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">
-                  <span className="text-gray-900 dark:text-white">passionate:</span>{' '}
-                  <span className="text-blue-600 dark:text-blue-400">true</span>,
-                </div>
-                <div className="pl-4 text-gray-600 dark:text-gray-400">
-                  <span className="text-gray-900 dark:text-white">availableForWork:</span>{' '}
-                  <span className="text-blue-600 dark:text-blue-400">true</span>
-                </div>
-                <div className="text-gray-600 dark:text-gray-400">{'}'}</div>
+            {/* Code content */}
+            <div className="font-mono text-xs sm:text-sm space-y-2">
+              <div className="text-gray-600 dark:text-gray-400">
+                <span className="text-pink-500 dark:text-pink-400">const</span>{' '}
+                <span className="text-gray-900 dark:text-white">developer</span>{' '}
+                <span className="text-pink-500 dark:text-pink-400">=</span>{' '}
+                <span className="text-gray-600 dark:text-gray-400">{'{'}</span>
               </div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">
+                <span className="text-gray-900 dark:text-white">name:</span>{' '}
+                <span className="text-green-600 dark:text-green-400">'Ayush Salunkhe'</span>,
+              </div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">
+                <span className="text-gray-900 dark:text-white">skills:</span>{' '}
+                <span className="text-gray-600 dark:text-gray-400">[</span>
+              </div>
+              <div className="pl-8 text-green-600 dark:text-green-400">
+                'React', 'Node.js', 'MongoDB',
+              </div>
+              <div className="pl-8 text-green-600 dark:text-green-400">
+                'Express', 'JavaScript', 'Python'
+              </div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">],</div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">
+                <span className="text-gray-900 dark:text-white">education:</span>{' '}
+                <span className="text-green-600 dark:text-green-400">'Computer Engineering'</span>,
+              </div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">
+                <span className="text-gray-900 dark:text-white">passionate:</span>{' '}
+                <span className="text-blue-600 dark:text-blue-400">true</span>,
+              </div>
+              <div className="pl-4 text-gray-600 dark:text-gray-400">
+                <span className="text-gray-900 dark:text-white">availableForWork:</span>{' '}
+                <span className="text-blue-600 dark:text-blue-400">true</span>
+              </div>
+              <div className="text-gray-600 dark:text-gray-400">{'}'}</div>
             </div>
           </GlassCard>
         </div>
