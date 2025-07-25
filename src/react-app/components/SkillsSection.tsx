@@ -103,15 +103,17 @@ export default function SkillsSection() {
 
         {/* Additional info */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8 mt-12 sm:mt-16 px-4">
-          // Update the stats cards
           <GlassCard className="text-center p-4 sm:p-6" stickyIndex={1}>
-            {/* Technologies card content */}
+            <h4 className="text-2xl font-bold text-violet-500 dark:text-violet-400">50+</h4>
+            <p className="mt-2 text-gray-700 dark:text-gray-300">Technologies & Tools</p>
           </GlassCard>
           <GlassCard className="text-center p-4 sm:p-6" stickyIndex={2}>
-            {/* Commits card content */}
+            <h4 className="text-2xl font-bold text-violet-500 dark:text-violet-400">1000+</h4>
+            <p className="mt-2 text-gray-700 dark:text-gray-300">GitHub Commits</p>
           </GlassCard>
           <GlassCard className="text-center p-4 sm:p-6" stickyIndex={3}>
-            {/* Learning Mindset card content */}
+            <h4 className="text-2xl font-bold text-violet-500 dark:text-violet-400">Daily</h4>
+            <p className="mt-2 text-gray-700 dark:text-gray-300">Learning & Improving</p>
           </GlassCard>
         </div>
       </div>
