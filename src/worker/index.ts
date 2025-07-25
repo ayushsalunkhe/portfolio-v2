@@ -3,7 +3,6 @@ import { Env } from "./env";
 import { cors } from "hono/cors";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
-// ...existing code...
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -22,15 +21,12 @@ const ContactSchema = z.object({
 app.post("/api/contact", zValidator("json", ContactSchema), async (c) => {
   try {
     const { name, email, subject, message } = c.req.valid("json");
-    // Store in database
-    const result = await c.env.DB.prepare(
-      "INSERT INTO contact_messages (name, email, subject, message) VALUES (?, ?, ?, ?)"
-    ).bind(name, email, subject, message).run();
+    // No database storage, just log the message
+    console.log("Contact form submission:", { name, email, subject, message });
 
     return c.json({
       success: true,
-      message: "Your message has been received! I'll get back to you soon.",
-      id: result.meta.last_row_id
+      message: "Your message has been received! I'll get back to you soon."
     });
   } catch (error) {
     // Error submitting contact form
@@ -43,16 +39,8 @@ app.post("/api/contact", zValidator("json", ContactSchema), async (c) => {
 
 // Get contact messages (for admin purposes)
 app.get("/api/contact", async (c) => {
-  try {
-    const { results } = await c.env.DB.prepare(
-      "SELECT * FROM contact_messages ORDER BY created_at DESC LIMIT 50"
-    ).all();
-    
-    return c.json(results);
-  } catch (error) {
-    // Error fetching contact messages
-    return c.json({ error: "Failed to fetch messages" }, 500);
-  }
+  // Return empty array instead of database query
+  return c.json([]);
 });
 
 export default app;
