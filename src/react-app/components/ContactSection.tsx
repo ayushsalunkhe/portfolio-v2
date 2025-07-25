@@ -28,8 +28,6 @@ export default function ContactSection() {
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
     
-    console.log('Submitting form with data:', formData);
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -46,7 +44,6 @@ export default function ContactSection() {
           type: 'success',
           message: result.message
         });
-        // Reset form on success
         setFormData({
           name: '',
           email: '',
@@ -54,14 +51,12 @@ export default function ContactSection() {
           message: ''
         });
       } else {
-        console.error('API Response Error:', response.status, result);
         setSubmitStatus({
           type: 'error',
           message: result.message || 'Failed to send message. Please try again.'
         });
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'
@@ -133,126 +128,20 @@ export default function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
-                    placeholder="Your name"
-                  />
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Name</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base" placeholder="Your name"/>
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
-                    placeholder="your@email.com"
-                  />
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 text-sm sm:text-base" placeholder="your@email.com"/>
                 </div>
               </div>
-              
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300"
-                  placeholder="What's this about?"
-                />
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                <input type="text" id="subject" name="subject" value={formData.subject} onChange={handleChange} required className="w-full px-4 py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300" placeholder="What's this about?"/>
               </div>
-              
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 resize-none"
-                  placeholder="Tell me about your project..."
-                />
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleChange} required rows={6} className="w-full px-4 py-3 bg-white/60 dark:bg-white/10 border border-gray-300/50 dark:border-white/20 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent transition-all duration-300 resize-none" placeholder="Tell me about your project..."></textarea>
               </div>
-              
-              {/* Status Message */}
-              {submitStatus.type && (
-                <div className={`p-4 rounded-lg border flex items-center gap-3 ${
-                  submitStatus.type === 'success' 
-                    ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200'
-                    : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
-                }`}>
-                  {submitStatus.type === 'success' ? (
-                    <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />
-                  ) : (
-                    <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" />
-                  )}
-                  <p className="text-sm">{submitStatus.message}</p>
-                </div>
-              )}
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-8 py-4 bg-gradient-to-r from-violet-500 to-pink-500 text-white rounded-lg font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-violet-500/25 ${
-                  isSubmitting 
-                    ? 'opacity-70 cursor-not-allowed' 
-                    : 'hover:from-violet-600 hover:to-pink-600 hover:shadow-violet-500/35'
-                }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-5 h-5" />
-                  </>
-                )}
-              </button>
-            </form>
-          </GlassCard>
-
-          {/* Contact Info */}
-          <div className="space-y-6 sm:space-y-8">
-            <GlassCard className="p-4 sm:p-6" stickyIndex={1}>
-              {/* Send Message form */}
-            </GlassCard>
-            <GlassCard className="p-4 sm:p-6" stickyIndex={2}>
-              {/* Contact Information */}
-            </GlassCard>
-            <GlassCard className="p-4 sm:p-6" stickyIndex={3}>
-              {/* Follow Me */}
-            </GlassCard>
-            <GlassCard className="p-4 sm:p-6" stickyIndex={4}>
-              {/* Let's Work Together */}
-            </GlassCard>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+              {submitStatus.type && (<div className={`p-4 rounded-lg border flex items-center gap-3 ${submitStatus.type === 'success' ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 text-green-800 dark:text-green-200' : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'}`}>{submitStatus.type === 'success' ? (<CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0" />) : (<AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0" />)}<p className="text-sm">{submit
