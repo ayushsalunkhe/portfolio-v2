@@ -33,7 +33,7 @@ app.post("/api/contact", zValidator("json", ContactSchema), async (c) => {
         const resend = new Resend(c.env.RESEND_API_KEY);
         
         await resend.emails.send({
-          from: "VisionFolio Contact <noreply@mocha.app>",
+          from: "VisionFolio Contact <noreply@portfolio-v2.app>",
           to: [c.env.CONTACT_EMAIL],
           subject: `New Contact Form Submission: ${subject}`,
           html: `
