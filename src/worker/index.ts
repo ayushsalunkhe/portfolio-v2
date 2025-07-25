@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { Env } from "./env";
 import { cors } from "hono/cors";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
