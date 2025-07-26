@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   Mail,
   MapPin,
@@ -11,14 +11,17 @@ import {
   AlertCircle,
   Loader2,
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import GlassCard from './GlassCard';
 
 export default function ContactSection() {
+  const form = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
+    time: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,38 +39,59 @@ export default function ContactSection() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ type: null, message: '' });
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+      if (!form.current) return;
+
+      // Add current time to the form data
+      const now = new Date();
+      const formattedTime = now.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
       });
 
-      const result = await response.json();
+      // Update the hidden time input
+      const timeInput = form.current.querySelector('input[name="time"]') as HTMLInputElement;
+      if (timeInput) {
+        timeInput.value = formattedTime;
+      }
 
-      if (response.ok && result.success) {
-        setSubmitStatus({ type: 'success', message: result.message });
-        setFormData({ name: '', email: '', subject: '', message: '' });
+      const result = await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      if (result.text === 'OK') {
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you for your message! I will get back to you soon.',
+        });
+        setFormData({ name: '', email: '', subject: '', message: '', time: '' });
       } else {
         setSubmitStatus({
           type: 'error',
-          message: result.message || 'Failed to send message. Please try again.',
+          message: 'Failed to send message. Please try again.',
         });
       }
-    } catch {
+    } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Network error. Please check your connection and try again.',
+        message: 'Failed to send message. Please try again.',
       });
+      console.error('EmailJS error:', error);
     } finally {
       setIsSubmitting(false);
     }
-  };
 
   const contactInfo = [
     {
@@ -133,7 +157,8 @@ export default function ContactSection() {
             <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Send Message
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form ref={form} onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <input type="hidden" name="time" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
