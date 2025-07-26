@@ -2,7 +2,7 @@ export default function AnimatedBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden">
       {/* Main gradient background - different for light and dark modes */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-indigo-900 dark:via-purple-900 dark:to-pink-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-black dark:via-gray-900 dark:to-gray-950" />
       
       {/* Animated orbs - adjusted opacity for better visibility */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-violet-400/30 dark:to-purple-400/30 rounded-full blur-3xl animate-pulse" />
