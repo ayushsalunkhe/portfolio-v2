@@ -49,7 +49,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background-color: #0d1224;
+  background-color: #050914;
 }
 
 #sticky-card-1 { --index: 1; }
