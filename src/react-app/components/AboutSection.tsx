@@ -1,5 +1,6 @@
 import { Code, Palette, Lightbulb, Users } from 'lucide-react';
 import GlassCard from './GlassCard';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function AboutSection() {
   const highlights = [
@@ -40,13 +41,15 @@ export default function AboutSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left side - Image */}
+          {/* Left side - Lottie Animation */}
           <div className="relative order-2 lg:order-1">
             <GlassCard className="p-6 sm:p-8">
-              <div className="aspect-square bg-gradient-to-br from-violet-500/20 to-pink-500/20 rounded-2xl flex items-center justify-center">
-                <div className="w-24 h-24 sm:w-32 sm:h-32 bg-gradient-to-br from-violet-400 to-pink-400 rounded-full flex items-center justify-center text-white text-3xl sm:text-4xl font-bold">
-                  AS
-                </div>
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <DotLottieReact
+                  src="https://lottie.host/d3ceb63e-3986-43f2-b7f8-09310bab4659/njQxj3lZjA.json"
+                  loop
+                  autoplay
+                />
               </div>
             </GlassCard>
           </div>
