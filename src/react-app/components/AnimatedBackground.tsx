@@ -3,16 +3,14 @@ export default function DualThemeAnimatedBackground() {
     <div className="fixed inset-0 -z-50 overflow-hidden">
       {/* =================================================================
           LAYER 1: Main Gradient
-          - Light Mode: The original soft blue gradient.
-          - Dark Mode: The new premium deep space gradient.
+          - Light Mode: The original soft blue gradient (UNCHANGED).
+          - Dark Mode: NEW deep blue gradient based on your image.
       ================================================================= */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-indigo-950 dark:to-black" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-blue-900" />
 
       {/* =================================================================
           LAYER 2: Dot Grid (Conditional)
-          - Two separate divs are used for the dot pattern.
-          - `dark:hidden` shows the first div ONLY in light mode.
-          - `hidden dark:block` shows the second div ONLY in dark mode.
+          - No changes here.
       ================================================================= */}
       {/* Light mode dot grid (darker dots) */}
       <div
@@ -35,8 +33,7 @@ export default function DualThemeAnimatedBackground() {
 
       {/* =================================================================
           LAYER 3: Animated Orbs with Light/Dark Variants
-          - Each orb now has both its original light mode color and a new
-            dark mode color to match the premium theme.
+          - No changes here. The existing orbs will look great on the new blue.
       ================================================================= */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-cyan-500/20 dark:to-teal-500/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-purple-600/20 dark:to-indigo-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}/>
@@ -44,8 +41,7 @@ export default function DualThemeAnimatedBackground() {
       
       {/* =================================================================
           LAYER 4: Floating Particles (Restored)
-          - The subtle floating particles from your original code are back,
-            with their light and dark mode variants intact.
+          - No changes here.
       ================================================================= */}
       <div className="absolute inset-0">
         {Array.from({ length: 50 }).map((_, i) => (
