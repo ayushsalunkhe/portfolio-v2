@@ -65,3 +65,25 @@ body {
   background: linear-gradient(to bottom, #7c3aed, #db2777);
 }
 
+/* View Transitions API styling */
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: reveal 0.5s ease-in-out;
+  mix-blend-mode: normal;
+  z-index: 9999;
+}
+
+@keyframes reveal {
+  from {
+    /* adjust to position of your button, for example top-right */
+    clip-path: circle(24px at calc(100% - 48px) 48px);
+  }
+  to {
+    clip-path: circle(150% at calc(100% - 48px) 48px);
+  }
+}
