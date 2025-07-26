@@ -1,29 +1,38 @@
-export default function AnimatedBackground() {
-  return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
-      {/* Main gradient background - updated dark mode for a premium feel */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-purple-950 dark:to-black" />
+export default function PremiumAnimatedBackground() {
+  return (
+    <div className="fixed inset-0 -z-50 overflow-hidden">
+      {/* Layer 1: The Main Gradient
+        A deep, multi-color gradient that provides the base 'premium dark' feel.
+        It moves from a dark slate, through a deep indigo, to pure black.
+      */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-indigo-950 to-black" />
 
-      {/* Animated orbs - adjusted opacity for better visibility on the new dark background */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-violet-500/30 dark:to-purple-500/30 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-pink-500/30 dark:to-rose-500/30 rounded-full blur-3xl animate-pulse delay-1000" />
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 dark:from-blue-500/25 dark:to-cyan-500/25 rounded-full blur-3xl animate-pulse delay-2000" />
+      {/* Layer 2: Subtle Dot Grid
+        An advanced technique using a repeating radial gradient to create a techy dot pattern.
+        A mask is applied to make it fade out towards the edges, focusing the eye on the center.
+      */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
+          backgroundSize: '2rem 2rem',
+          maskImage: 'radial-gradient(ellipse at center, white 20%, transparent 100%)',
+        }}
+      />
 
-      {/* Floating particles - optimized for dark background */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 50 }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gray-400/30 dark:bg-white/20 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${10 + Math.random() * 20}s`,
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
+      {/* Layer 3: Animated Glowing Orbs
+        These provide color and a sense of life. Their colors are chosen to complement
+        the background gradient and the typical tech/portfolio accent colors (cyan, purple).
+        The blur and low opacity make them soft and ambient.
+      */}
+      <div 
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" 
+        style={{ animationDelay: '1s' }}
+      />
+      <div 
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-full blur-3xl animate-pulse" 
+        style={{ animationDelay: '3s' }}
+      />
+    </div>
+  );
 }
