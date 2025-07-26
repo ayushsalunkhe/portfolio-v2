@@ -4,9 +4,9 @@ export default function DualThemeAnimatedBackground() {
       {/* =================================================================
           LAYER 1: Main Gradient
           - Light Mode: The original soft blue gradient (UNCHANGED).
-          - Dark Mode: NEW deep blue gradient based on your image.
+          - Dark Mode: NEW "Midnight Fuel" gradient.
       ================================================================= */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-blue-950 dark:to-blue-900" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-black dark:via-indigo-950 dark:to-slate-950" />
 
       {/* =================================================================
           LAYER 2: Dot Grid (Conditional)
@@ -33,7 +33,7 @@ export default function DualThemeAnimatedBackground() {
 
       {/* =================================================================
           LAYER 3: Animated Orbs with Light/Dark Variants
-          - No changes here. The existing orbs will look great on the new blue.
+          - No changes here.
       ================================================================= */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-cyan-500/20 dark:to-teal-500/20 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-purple-600/20 dark:to-indigo-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}/>
