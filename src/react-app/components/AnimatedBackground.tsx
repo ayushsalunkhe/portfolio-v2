@@ -1,18 +1,31 @@
-export default function PremiumAnimatedBackground() {
+export default function DualThemeAnimatedBackground() {
   return (
     <div className="fixed inset-0 -z-50 overflow-hidden">
-      {/* Layer 1: The Main Gradient
-        A deep, multi-color gradient that provides the base 'premium dark' feel.
-        It moves from a dark slate, through a deep indigo, to pure black.
-      */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-indigo-950 to-black" />
+      {/* =================================================================
+          LAYER 1: Main Gradient
+          - Light Mode: The original soft blue gradient.
+          - Dark Mode: The new premium deep space gradient.
+      ================================================================= */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-gray-950 dark:via-indigo-950 dark:to-black" />
 
-      {/* Layer 2: Subtle Dot Grid
-        An advanced technique using a repeating radial gradient to create a techy dot pattern.
-        A mask is applied to make it fade out towards the edges, focusing the eye on the center.
-      */}
+      {/* =================================================================
+          LAYER 2: Dot Grid (Conditional)
+          - Two separate divs are used for the dot pattern.
+          - `dark:hidden` shows the first div ONLY in light mode.
+          - `hidden dark:block` shows the second div ONLY in dark mode.
+      ================================================================= */}
+      {/* Light mode dot grid (darker dots) */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 dark:hidden"
+        style={{
+          backgroundImage: 'radial-gradient(circle at center, rgba(0, 0, 0, 0.05) 1px, transparent 1px)',
+          backgroundSize: '2rem 2rem',
+          maskImage: 'radial-gradient(ellipse at center, white 50%, transparent 100%)',
+        }}
+      />
+      {/* Dark mode dot grid (lighter dots) */}
+      <div
+        className="absolute inset-0 hidden dark:block"
         style={{
           backgroundImage: 'radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 1px, transparent 1px)',
           backgroundSize: '2rem 2rem',
@@ -20,19 +33,34 @@ export default function PremiumAnimatedBackground() {
         }}
       />
 
-      {/* Layer 3: Animated Glowing Orbs
-        These provide color and a sense of life. Their colors are chosen to complement
-        the background gradient and the typical tech/portfolio accent colors (cyan, purple).
-        The blur and low opacity make them soft and ambient.
-      */}
-      <div 
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 rounded-full blur-3xl animate-pulse" 
-        style={{ animationDelay: '1s' }}
-      />
-      <div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-600/20 to-indigo-600/20 rounded-full blur-3xl animate-pulse" 
-        style={{ animationDelay: '3s' }}
-      />
+      {/* =================================================================
+          LAYER 3: Animated Orbs with Light/Dark Variants
+          - Each orb now has both its original light mode color and a new
+            dark mode color to match the premium theme.
+      ================================================================= */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-cyan-500/20 dark:to-teal-500/20 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-purple-600/20 dark:to-indigo-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}/>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 dark:from-indigo-500/20 dark:to-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}/>
+      
+      {/* =================================================================
+          LAYER 4: Floating Particles (Restored)
+          - The subtle floating particles from your original code are back,
+            with their light and dark mode variants intact.
+      ================================================================= */}
+      <div className="absolute inset-0">
+        {Array.from({ length: 50 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-gray-400/30 dark:bg-white/20 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 10}s`,
+              animationDuration: `${10 + Math.random() * 20}s`,
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }
