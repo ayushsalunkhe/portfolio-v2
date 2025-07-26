@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import {
   Mail,
   MapPin,
@@ -92,6 +92,7 @@ export default function ContactSection() {
     } finally {
       setIsSubmitting(false);
     }
+  };
 
   const contactInfo = [
     {
@@ -329,5 +330,4 @@ export default function ContactSection() {
       </div>
     </section>
   );
-}
 }
