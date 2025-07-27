@@ -7,9 +7,9 @@ interface GlassCardProps {
   stickyIndex?: number;
 }
 
-export default function GlassCard({  
-  children,  
-  className = '',  
+export default function GlassCard({ 
+  children, 
+  className = '', 
   hover = true,
   stickyIndex
 }: GlassCardProps) {
@@ -17,28 +17,13 @@ export default function GlassCard({
     <div
       id={stickyIndex ? `sticky-card-${stickyIndex}` : undefined}
       className={`
-        // --- Core Vision Pro Style ---
-        backdrop-blur-2xl 
-        rounded-3xl 
-        p-6
-        border
-        transition-all duration-300
-
-        // --- Background & Shadow (Light vs. Dark) ---
-        // Light Mode: A clean, white glass look
-        bg-gradient-to-br from-white/80 to-white/60
-        border-white/50
-        shadow-2xl shadow-gray-300/20
-
-        // Dark Mode: A brighter, ethereal glass that 'glows'
-        dark:bg-gradient-to-br dark:from-white/10 dark:to-white/5
-        dark:border-white/15
-        dark:shadow-2xl dark:shadow-black/20
-
-        // --- Hover Effect ---
-        ${hover ? 'hover:dark:border-white/25 hover:border-white' : ''}
-        
-        // --- Sticky & Custom Classes ---
+        backdrop-blur-xl 
+        bg-white/80 dark:bg-white/5 
+        border border-gray-200/50 dark:border-white/10
+        rounded-3xl p-6
+        ${hover ? 'hover:bg-white/90 dark:hover:bg-white/10 hover:border-gray-300/60 dark:hover:border-white/20' : ''}
+        transition-all duration-500 ease-out
+        shadow-xl shadow-gray-200/20 dark:shadow-black/20
         ${stickyIndex ? 'sticky-card' : ''}
         ${className}
       `}
