@@ -18,9 +18,10 @@ export default function GlassCard({
       id={stickyIndex ? `sticky-card-${stickyIndex}` : undefined}
       className={`
         relative overflow-hidden
-        backdrop-blur-3xl // Remains strong for the glass effect
-        // --- IMPORTANT FIX HERE: Significantly reduced background opacity ---
-        bg-gradient-to-br from-white/20 to-white/10 dark:from-white/5 dark:to-white/[0.02] // Much lower opacity!
+        backdrop-blur-3xl
+        // --- IMPORTANT FIX HERE: Even lower opacity for light mode background ---
+        bg-gradient-to-br from-white/15 to-white/5 // Reduced from /20 and /10
+        dark:from-white/5 dark:to-white/[0.02]
         border border-gray-200/60 dark:border-white/15
         rounded-3xl p-6
         ${hover ? 'hover:scale-[1.01] hover:shadow-2xl hover:shadow-gray-300/30 dark:hover:shadow-black/30 hover:border-gray-300/70 dark:hover:border-white/25' : ''}
@@ -30,7 +31,7 @@ export default function GlassCard({
         ${className}
       `}
     >
-      {/* Subtle Inner Border/Highlight for premium feel (still good to keep) */}
+      {/* Subtle Inner Border/Highlight for premium feel */}
       <div className="absolute inset-[1px] rounded-[calc(1.5rem-1px)] border border-white/50 dark:border-white/5 pointer-events-none"></div>
 
       {children}
