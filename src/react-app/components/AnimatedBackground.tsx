@@ -3,10 +3,9 @@ export default function DualThemeAnimatedBackground() {
     <div className="fixed inset-0 -z-50 overflow-hidden">
       {/* =================================================================
           LAYER 1: Main Gradient
-          - Light Mode: The original soft blue gradient (UNCHANGED).
-          - Dark Mode: NEW "Midnight Fuel" gradient.
+          - Dark Mode: Now an even darker, more subtle black-to-gray gradient.
       ================================================================= */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-black dark:via-indigo-950 dark:to-slate-950" />
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100 dark:from-black dark:via-gray-950 dark:to-black" />
 
       {/* =================================================================
           LAYER 2: Dot Grid (Conditional)
@@ -32,15 +31,16 @@ export default function DualThemeAnimatedBackground() {
       />
 
       {/* =================================================================
-          LAYER 3: Animated Orbs with Light/Dark Variants
-          - No changes here.
+          LAYER 3: Animated Orbs (Dimmed)
+          - All orbs have reduced opacity and use darker color shades for a
+            more subtle effect, especially on mobile. The middle orb is now the dimmest.
       ================================================================= */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-cyan-500/20 dark:to-teal-500/20 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-purple-600/20 dark:to-indigo-600/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}/>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 dark:from-indigo-500/20 dark:to-blue-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}/>
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-violet-400/20 to-purple-400/20 dark:from-cyan-600/15 dark:to-teal-600/15 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-rose-400/20 dark:from-purple-700/15 dark:to-indigo-700/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}/>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-cyan-400/15 dark:from-indigo-800/10 dark:to-blue-800/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}/>
       
       {/* =================================================================
-          LAYER 4: Floating Particles (Restored)
+          LAYER 4: Floating Particles
           - No changes here.
       ================================================================= */}
       <div className="absolute inset-0">
